@@ -88,13 +88,32 @@ typedef enum {
 {
     NSDate *currentDate = [NSDate date];
     
-    NSInteger currentHour = [self hoursFromDate:currentDate];
-    NSInteger curretMinute = [self minutesFromDate:currentDate];
+//    NSInteger currentHour = [self hoursFromDate:currentDate];
+//    NSInteger curretMinute = [self minutesFromDate:currentDate];
+//    
+//    NSInteger endHour = [self hoursFromDate:self.endDate];
+//    NSInteger endMinute = [self minutesFromDate:self.endDate];
     
-    NSInteger endHour = [self hoursFromDate:self.endDate];
-    NSInteger endMinute = [self minutesFromDate:self.endDate];
+    // Check time between the two
+    NSDateComponents *difference = [[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
+    NSInteger dayDiff = [difference day];
+
+    difference = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
+    NSInteger hourDiff = [difference hour];
     
+    difference = [[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
+    NSInteger minDiff = [difference minute];
     
+    difference = [[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
+    NSInteger secDiff = [difference second];
+    
+//    self.daysLabel.text=[NSString stringWithFormat:@"%d",dayDiff];
+//    self.hoursLabel.text=[NSString stringWithFormat:@"%d",hourDiff];
+//    self.minutesLabel.text=[NSString stringWithFormat:@"%d",minDiff];
+//    self.secondsLabel.text=[NSString stringWithFormat:@"%d",secDiff];
+    
+    NSLog(@"\nDays: %li\nHours: %ld\nMinutes: %li\nSeconds: %li",(long)dayDiff,(long)hourDiff,(long)minDiff,(long)secDiff);
+
     
 }
 
