@@ -16,6 +16,7 @@ typedef enum {
 #import "DatePickerVC.h"
 #import "NSDate+Helper.h"
 #import "NSDate+timerHelper.h"
+#import "VisualViewVC.h"
 
 @interface ViewController ()
 {
@@ -26,6 +27,7 @@ typedef enum {
 @property (strong) NSDate *startDate;
 @property (strong) NSDate *endDate;
 @property (strong) NSTimer *UIUpdateTimer;
+@property (strong) VisualViewVC *visualVC;
 
 @property (strong) IBOutlet UILabel  *timeLeft;
 
@@ -159,27 +161,14 @@ typedef enum {
     }
 }
 
-//
-//-(NSInteger)hoursFromDate:(NSDate*)fromThisDate
-//{
-//    static NSDateFormatter *_hourFormatter;
-//    if (!_hourFormatter) {
-//        _hourFormatter = [[NSDateFormatter alloc] init];
-//        [_hourFormatter setDateFormat:@"HH"];
-//    }
-//    NSString *hourString = [_hourFormatter stringFromDate: fromThisDate];
-//    return [hourString intValue];
-//}
-//
-//-(NSInteger)minutesFromDate:(NSDate*)fromThisDate
-//{
-//    static NSDateFormatter *_minuteFormatter;
-//    if (!_minuteFormatter) {
-//        _minuteFormatter = [[NSDateFormatter alloc] init];
-//        [_minuteFormatter setDateFormat:@"mm"];
-//    }
-//    NSString *minuteString = [_minuteFormatter stringFromDate: fromThisDate];
-//    return [minuteString intValue];
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"VisualVCSegue"])
+    {
+        self.visualVC = (VisualViewVC*)[segue destinationViewController];
+        NSAssert(self.visualVC, @"VisualVC is nil!!!!!!!");
+    }
+}
+
 
 @end
