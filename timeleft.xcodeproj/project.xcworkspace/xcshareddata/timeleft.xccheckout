@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>018B7406-024A-4CF2-970D-AE599AA1DA71</string>
+	<key>IDESourceControlProjectName</key>
+	<string>timeleft</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E09165B3073AAC87CCBAD9F1931B0AF085487563</key>
+		<string>github.com:pogestudio/hipster-timer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>timeleft.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E09165B3073AAC87CCBAD9F1931B0AF085487563</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:pogestudio/hipster-timer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E09165B3073AAC87CCBAD9F1931B0AF085487563</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E09165B3073AAC87CCBAD9F1931B0AF085487563</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hipster-timer</string>
+		</dict>
+	</array>
+</dict>
+</plist>
