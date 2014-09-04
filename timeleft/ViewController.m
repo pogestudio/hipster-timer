@@ -83,7 +83,7 @@ typedef enum {
             NSLog(@"User canceled or some shits");
             break;
     }
-    [self makeSureEndDateIsAfterThisMoment];
+    [self makeSureEndDateIsCorrectDay];
     [self makeSureDatesAreInOrder];
     [self.datePickerVC.view removeFromSuperview];
 }
@@ -93,6 +93,7 @@ typedef enum {
     if (!self.startDate || !self.endDate) {
         return;
     }
+    
     NSDate *currentDate = [NSDate date];
     
 //    NSInteger currentHour = [self hoursFromDate:currentDate];
@@ -126,8 +127,12 @@ typedef enum {
 
 #pragma mark DateFixes
 
--(void)makeSureEndDateIsAfterThisMoment
+-(void)makeSureEndDateIsCorrectDay
 {
+    //shift to today
+    self.endDate = [self.endDate dateAdjustedToBeTheSameDayAs:[NSDate date]];
+    
+    //if it's earlier than current time, shift one day forward
     if ([self.endDate isEarlierThanDate:[NSDate date]]) {
         CGFloat secondsInADay = ((60 * 60) * 24);
         NSDate *newDate = [NSDate dateWithTimeInterval:secondsInADay sinceDate:self.endDate];
