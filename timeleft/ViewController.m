@@ -14,6 +14,8 @@ typedef enum {
 
 #import "ViewController.h"
 #import "DatePickerVC.h"
+#import "NSDate+Helper.h"
+#import "NSDate+timerHelper.h"
 
 @interface ViewController ()
 {
@@ -81,6 +83,8 @@ typedef enum {
             NSLog(@"User canceled or some shits");
             break;
     }
+    [self makeSureEndDateIsAfterThisMoment];
+    [self makeSureDatesAreInOrder];
     [self.datePickerVC.view removeFromSuperview];
 }
 
@@ -116,30 +120,61 @@ typedef enum {
 //    self.secondsLabel.text=[NSString stringWithFormat:@"%d",secDiff];
     
     NSLog(@"\nDays: %li\nHours: %ld\nMinutes: %li\nSeconds: %li",(long)dayDiff,(long)hourDiff,(long)minDiff,(long)secDiff);
-
+    self.timeLeft.text = [NSString stringWithFormat:@"%ld secs left!",(long)secDiff];
     
 }
 
--(NSInteger)hoursFromDate:(NSDate*)fromThisDate
+#pragma mark DateFixes
+
+-(void)makeSureEndDateIsAfterThisMoment
 {
-    static NSDateFormatter *_hourFormatter;
-    if (!_hourFormatter) {
-        _hourFormatter = [[NSDateFormatter alloc] init];
-        [_hourFormatter setDateFormat:@"HH"];
+    if ([self.endDate isEarlierThanDate:[NSDate date]]) {
+        CGFloat secondsInADay = ((60 * 60) * 24);
+        NSDate *newDate = [NSDate dateWithTimeInterval:secondsInADay sinceDate:self.endDate];
+        self.endDate = newDate;
     }
-    NSString *hourString = [_hourFormatter stringFromDate: fromThisDate];
-    return [hourString intValue];
 }
 
--(NSInteger)minutesFromDate:(NSDate*)fromThisDate
+-(void)makeSureDatesAreInOrder
 {
-    static NSDateFormatter *_minuteFormatter;
-    if (!_minuteFormatter) {
-        _minuteFormatter = [[NSDateFormatter alloc] init];
-        [_minuteFormatter setDateFormat:@"mm"];
+
+    //make sure that the end day and start day are on the same day
+    BOOL datesAreOnSameDay = [self.startDate isEqualToDateIgnoringTime:self.endDate];
+    if (!datesAreOnSameDay) {
+        self.startDate = [self.startDate dateAdjustedToBeTheSameDayAs:self.endDate];
     }
-    NSString *minuteString = [_minuteFormatter stringFromDate: fromThisDate];
-    return [minuteString intValue];
+    
+    //If start date is earlier than end date, all is fine.
+    //If not, push back start date 24 hrs.
+    BOOL startIsLaterThanEnd = [self.startDate isLaterThanDate:self.endDate];
+    if (startIsLaterThanEnd) {
+        CGFloat secondsInADay = ((60 * 60) * 24);
+        NSDate *newDate = [NSDate dateWithTimeInterval:-secondsInADay sinceDate:self.startDate];
+        self.startDate = newDate;
+    }
 }
+
+//
+//-(NSInteger)hoursFromDate:(NSDate*)fromThisDate
+//{
+//    static NSDateFormatter *_hourFormatter;
+//    if (!_hourFormatter) {
+//        _hourFormatter = [[NSDateFormatter alloc] init];
+//        [_hourFormatter setDateFormat:@"HH"];
+//    }
+//    NSString *hourString = [_hourFormatter stringFromDate: fromThisDate];
+//    return [hourString intValue];
+//}
+//
+//-(NSInteger)minutesFromDate:(NSDate*)fromThisDate
+//{
+//    static NSDateFormatter *_minuteFormatter;
+//    if (!_minuteFormatter) {
+//        _minuteFormatter = [[NSDateFormatter alloc] init];
+//        [_minuteFormatter setDateFormat:@"mm"];
+//    }
+//    NSString *minuteString = [_minuteFormatter stringFromDate: fromThisDate];
+//    return [minuteString intValue];
+//}
 
 @end
