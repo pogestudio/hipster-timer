@@ -21,6 +21,8 @@
 		0235066419B6168400DD33F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0235064619B6168400DD33F3 /* UIKit.framework */; };
 		0235066C19B6168400DD33F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0235066A19B6168400DD33F3 /* InfoPlist.strings */; };
 		0235066E19B6168400DD33F3 /* timeleftTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235066D19B6168400DD33F3 /* timeleftTests.m */; };
+		025F558519B87FA200816A5C /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F558419B87FA200816A5C /* NSDate+Helper.m */; };
+		025F558819B8811300816A5C /* NSDate+timerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F558719B8811300816A5C /* NSDate+timerHelper.m */; };
 		02896F9C19B618E700E37951 /* DatePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 02896F9B19B618E700E37951 /* DatePickerVC.m */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,10 @@
 		0235066919B6168400DD33F3 /* timeleftTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "timeleftTests-Info.plist"; sourceTree = "<group>"; };
 		0235066B19B6168400DD33F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0235066D19B6168400DD33F3 /* timeleftTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = timeleftTests.m; sourceTree = "<group>"; };
+		025F558319B87FA200816A5C /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		025F558419B87FA200816A5C /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		025F558619B8811300816A5C /* NSDate+timerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+timerHelper.h"; sourceTree = "<group>"; };
+		025F558719B8811300816A5C /* NSDate+timerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+timerHelper.m"; sourceTree = "<group>"; };
 		02896F9A19B618E700E37951 /* DatePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerVC.h; sourceTree = "<group>"; };
 		02896F9B19B618E700E37951 /* DatePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +127,10 @@
 				0235065419B6168400DD33F3 /* Main.storyboard */,
 				0235065719B6168400DD33F3 /* ViewController.h */,
 				0235065819B6168400DD33F3 /* ViewController.m */,
+				025F558619B8811300816A5C /* NSDate+timerHelper.h */,
+				025F558719B8811300816A5C /* NSDate+timerHelper.m */,
+				025F558419B87FA200816A5C /* NSDate+Helper.m */,
+				025F558319B87FA200816A5C /* NSDate+Helper.h */,
 				0235065A19B6168400DD33F3 /* Images.xcassets */,
 				0235064919B6168400DD33F3 /* Supporting Files */,
 			);
@@ -263,6 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0235065919B6168400DD33F3 /* ViewController.m in Sources */,
+				025F558519B87FA200816A5C /* NSDate+Helper.m in Sources */,
+				025F558819B8811300816A5C /* NSDate+timerHelper.m in Sources */,
 				0235065319B6168400DD33F3 /* AppDelegate.m in Sources */,
 				02896F9C19B618E700E37951 /* DatePickerVC.m in Sources */,
 				0235064F19B6168400DD33F3 /* main.m in Sources */,
