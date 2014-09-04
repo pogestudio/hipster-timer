@@ -86,6 +86,9 @@ typedef enum {
 
 -(void)updateLabels
 {
+    if (!self.startDate || !self.endDate) {
+        return;
+    }
     NSDate *currentDate = [NSDate date];
     
 //    NSInteger currentHour = [self hoursFromDate:currentDate];
