@@ -16,6 +16,7 @@ typedef enum {
 #import "DatePickerVC.h"
 #import "NSDate+Helper.h"
 #import "NSDate+timerHelper.h"
+#import "VisualViewVC.h"
 
 @interface ViewController ()
 {
@@ -26,8 +27,12 @@ typedef enum {
 @property (strong) NSDate *startDate;
 @property (strong) NSDate *endDate;
 @property (strong) NSTimer *UIUpdateTimer;
+@property (strong) VisualViewVC *visualVC;
 
-@property (strong) IBOutlet UILabel  *timeLeft;
+@property (strong) IBOutlet UIButton *startTimeButton;
+@property (strong) IBOutlet UIButton *endTimeButton;
+
+
 
 @end
 
@@ -68,15 +73,24 @@ typedef enum {
 -(void)userPickedDate:(NSDate*)newDate
 {
     NSAssert(newDate, @"Picked date is nil. WTF?");
+    
+    static NSDateFormatter *_buttonFormatter;
+    if (!_buttonFormatter) {
+        _buttonFormatter = [[NSDateFormatter alloc] init];
+        [_buttonFormatter setDateFormat:@"HH:mm"];
+    }
+    NSString *dateString = [_buttonFormatter stringFromDate:newDate];
     switch (_lastPickedDate) {
         case kDateTagStart:
         {
             self.startDate = newDate;
+            [self.startTimeButton setTitle:dateString forState:UIControlStateNormal];
             break;
         }
         case kDateTagEnd:
         {
             self.endDate = newDate;
+            [self.endTimeButton setTitle:dateString forState:UIControlStateNormal];
             break;
         }
         default:
@@ -84,7 +98,6 @@ typedef enum {
             break;
     }
     [self makeSureEndDateIsCorrectDay];
-    [self makeSureDatesAreInOrder];
     [self.datePickerVC.view removeFromSuperview];
 }
 
@@ -94,34 +107,9 @@ typedef enum {
         return;
     }
     
-    NSDate *currentDate = [NSDate date];
-    
-//    NSInteger currentHour = [self hoursFromDate:currentDate];
-//    NSInteger curretMinute = [self minutesFromDate:currentDate];
-//    
-//    NSInteger endHour = [self hoursFromDate:self.endDate];
-//    NSInteger endMinute = [self minutesFromDate:self.endDate];
-    
-    // Check time between the two
-    NSDateComponents *difference = [[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
-    NSInteger dayDiff = [difference day];
-
-    difference = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
-    NSInteger hourDiff = [difference hour];
-    
-    difference = [[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
-    NSInteger minDiff = [difference minute];
-    
-    difference = [[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:currentDate toDate:self.endDate options:0];
-    NSInteger secDiff = [difference second];
-    
-//    self.daysLabel.text=[NSString stringWithFormat:@"%d",dayDiff];
-//    self.hoursLabel.text=[NSString stringWithFormat:@"%d",hourDiff];
-//    self.minutesLabel.text=[NSString stringWithFormat:@"%d",minDiff];
-//    self.secondsLabel.text=[NSString stringWithFormat:@"%d",secDiff];
-    
-    NSLog(@"\nDays: %li\nHours: %ld\nMinutes: %li\nSeconds: %li",(long)dayDiff,(long)hourDiff,(long)minDiff,(long)secDiff);
-    self.timeLeft.text = [NSString stringWithFormat:@"%ld secs left!",(long)secDiff];
+    [self makeSureDatesAreInOrder];
+   
+    [self.visualVC showPieChartForStartTime:self.startDate andEndTime:self.endDate];
     
 }
 
@@ -159,27 +147,14 @@ typedef enum {
     }
 }
 
-//
-//-(NSInteger)hoursFromDate:(NSDate*)fromThisDate
-//{
-//    static NSDateFormatter *_hourFormatter;
-//    if (!_hourFormatter) {
-//        _hourFormatter = [[NSDateFormatter alloc] init];
-//        [_hourFormatter setDateFormat:@"HH"];
-//    }
-//    NSString *hourString = [_hourFormatter stringFromDate: fromThisDate];
-//    return [hourString intValue];
-//}
-//
-//-(NSInteger)minutesFromDate:(NSDate*)fromThisDate
-//{
-//    static NSDateFormatter *_minuteFormatter;
-//    if (!_minuteFormatter) {
-//        _minuteFormatter = [[NSDateFormatter alloc] init];
-//        [_minuteFormatter setDateFormat:@"mm"];
-//    }
-//    NSString *minuteString = [_minuteFormatter stringFromDate: fromThisDate];
-//    return [minuteString intValue];
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"VisualVCSegue"])
+    {
+        self.visualVC = (VisualViewVC*)[segue destinationViewController];
+        NSAssert(self.visualVC, @"VisualVC is nil!!!!!!!");
+    }
+}
+
 
 @end

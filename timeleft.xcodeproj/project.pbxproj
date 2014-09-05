@@ -23,6 +23,10 @@
 		0235066E19B6168400DD33F3 /* timeleftTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235066D19B6168400DD33F3 /* timeleftTests.m */; };
 		025F558519B87FA200816A5C /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F558419B87FA200816A5C /* NSDate+Helper.m */; };
 		025F558819B8811300816A5C /* NSDate+timerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F558719B8811300816A5C /* NSDate+timerHelper.m */; };
+		025F558B19B88CA300816A5C /* VisualViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F558A19B88CA300816A5C /* VisualViewVC.m */; };
+		025F558D19B88E8700816A5C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025F558C19B88E8700816A5C /* QuartzCore.framework */; };
+		025F559219B88EF100816A5C /* CERoundProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F558F19B88EF100816A5C /* CERoundProgressLayer.m */; };
+		025F559319B88EF100816A5C /* CERoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F559119B88EF100816A5C /* CERoundProgressView.m */; };
 		02896F9C19B618E700E37951 /* DatePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 02896F9B19B618E700E37951 /* DatePickerVC.m */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +64,13 @@
 		025F558419B87FA200816A5C /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		025F558619B8811300816A5C /* NSDate+timerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+timerHelper.h"; sourceTree = "<group>"; };
 		025F558719B8811300816A5C /* NSDate+timerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+timerHelper.m"; sourceTree = "<group>"; };
+		025F558919B88CA300816A5C /* VisualViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualViewVC.h; sourceTree = "<group>"; };
+		025F558A19B88CA300816A5C /* VisualViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualViewVC.m; sourceTree = "<group>"; };
+		025F558C19B88E8700816A5C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		025F558E19B88EF100816A5C /* CERoundProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CERoundProgressLayer.h; sourceTree = "<group>"; };
+		025F558F19B88EF100816A5C /* CERoundProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CERoundProgressLayer.m; sourceTree = "<group>"; };
+		025F559019B88EF100816A5C /* CERoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CERoundProgressView.h; sourceTree = "<group>"; };
+		025F559119B88EF100816A5C /* CERoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CERoundProgressView.m; sourceTree = "<group>"; };
 		02896F9A19B618E700E37951 /* DatePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerVC.h; sourceTree = "<group>"; };
 		02896F9B19B618E700E37951 /* DatePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				025F558D19B88E8700816A5C /* QuartzCore.framework in Frameworks */,
 				0235064519B6168400DD33F3 /* CoreGraphics.framework in Frameworks */,
 				0235064719B6168400DD33F3 /* UIKit.framework in Frameworks */,
 				0235064319B6168400DD33F3 /* Foundation.framework in Frameworks */,
@@ -110,6 +122,7 @@
 		0235064119B6168400DD33F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				025F558C19B88E8700816A5C /* QuartzCore.framework */,
 				0235064219B6168400DD33F3 /* Foundation.framework */,
 				0235064419B6168400DD33F3 /* CoreGraphics.framework */,
 				0235064619B6168400DD33F3 /* UIKit.framework */,
@@ -121,6 +134,7 @@
 		0235064819B6168400DD33F3 /* timeleft */ = {
 			isa = PBXGroup;
 			children = (
+				025F559419B88EF800816A5C /* OtherLibs */,
 				02896F9919B618A700E37951 /* MyClasses */,
 				0235065119B6168400DD33F3 /* AppDelegate.h */,
 				0235065219B6168400DD33F3 /* AppDelegate.m */,
@@ -129,8 +143,6 @@
 				0235065819B6168400DD33F3 /* ViewController.m */,
 				025F558619B8811300816A5C /* NSDate+timerHelper.h */,
 				025F558719B8811300816A5C /* NSDate+timerHelper.m */,
-				025F558419B87FA200816A5C /* NSDate+Helper.m */,
-				025F558319B87FA200816A5C /* NSDate+Helper.h */,
 				0235065A19B6168400DD33F3 /* Images.xcassets */,
 				0235064919B6168400DD33F3 /* Supporting Files */,
 			);
@@ -166,11 +178,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		025F559419B88EF800816A5C /* OtherLibs */ = {
+			isa = PBXGroup;
+			children = (
+				025F558419B87FA200816A5C /* NSDate+Helper.m */,
+				025F558319B87FA200816A5C /* NSDate+Helper.h */,
+				025F558E19B88EF100816A5C /* CERoundProgressLayer.h */,
+				025F558F19B88EF100816A5C /* CERoundProgressLayer.m */,
+				025F559019B88EF100816A5C /* CERoundProgressView.h */,
+				025F559119B88EF100816A5C /* CERoundProgressView.m */,
+			);
+			name = OtherLibs;
+			sourceTree = "<group>";
+		};
 		02896F9919B618A700E37951 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
 				02896F9A19B618E700E37951 /* DatePickerVC.h */,
 				02896F9B19B618E700E37951 /* DatePickerVC.m */,
+				025F558919B88CA300816A5C /* VisualViewVC.h */,
+				025F558A19B88CA300816A5C /* VisualViewVC.m */,
 			);
 			name = MyClasses;
 			sourceTree = "<group>";
@@ -274,7 +301,10 @@
 			files = (
 				0235065919B6168400DD33F3 /* ViewController.m in Sources */,
 				025F558519B87FA200816A5C /* NSDate+Helper.m in Sources */,
+				025F559319B88EF100816A5C /* CERoundProgressView.m in Sources */,
 				025F558819B8811300816A5C /* NSDate+timerHelper.m in Sources */,
+				025F559219B88EF100816A5C /* CERoundProgressLayer.m in Sources */,
+				025F558B19B88CA300816A5C /* VisualViewVC.m in Sources */,
 				0235065319B6168400DD33F3 /* AppDelegate.m in Sources */,
 				02896F9C19B618E700E37951 /* DatePickerVC.m in Sources */,
 				0235064F19B6168400DD33F3 /* main.m in Sources */,
