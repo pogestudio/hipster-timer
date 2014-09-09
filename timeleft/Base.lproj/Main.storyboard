@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -9,21 +9,17 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBs-tL-b28">
+                            <containerView opaque="NO" contentMode="scaleToFill" id="UBs-tL-b28">
                                 <rect key="frame" x="0.0" y="43" width="320" height="320"/>
                                 <connections>
                                     <segue destination="cww-Vt-JDf" kind="embed" identifier="VisualVCSegue" id="5y0-aI-foS"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" tag="99" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUR-Sm-y5D">
+                            <button opaque="NO" tag="99" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fUR-Sm-y5D">
                                 <rect key="frame" x="20" y="440" width="142" height="49"/>
                                 <state key="normal" title="Pick start time">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,7 +28,7 @@
                                     <action selector="userWantsToPickDate:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nHz-d5-CrQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-bD-qMJ">
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mg7-bD-qMJ">
                                 <rect key="frame" x="158" y="440" width="142" height="49"/>
                                 <state key="normal" title="Pick finish time">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,66 +51,72 @@
         <!--Date PickerVC-->
         <scene sceneID="Xqp-1y-QE8">
             <objects>
-                <viewController storyboardIdentifier="DatePickerVC" id="C2U-Cb-5TM" customClass="DatePickerVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eg4-zM-Xmm"/>
-                        <viewControllerLayoutGuide type="bottom" id="5fm-gK-7bU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Un7-oF-WgK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <viewController storyboardIdentifier="DatePickerVC" autoresizesArchivedViewToFullSize="NO" id="C2U-Cb-5TM" customClass="DatePickerVC" sceneMemberID="viewController">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="Un7-oF-WgK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Ln-R1-Zgo">
-                                <rect key="frame" x="0.0" y="230" width="320" height="162"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="4Ln-R1-Zgo">
+                                <rect key="frame" x="0.0" y="30" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="431364214.47071201">
                                     <!--2014-09-02 15:23:34 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bn-JQ-ujx">
-                                <rect key="frame" x="235" y="431" width="37" height="30"/>
-                                <state key="normal" title="Done">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Bn-JQ-ujx">
+                                <rect key="frame" x="160" y="0.5" width="160" height="30"/>
+                                <state key="normal" title="DONE">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="userWantsToReturn:" destination="C2U-Cb-5TM" eventType="touchUpInside" id="lTN-9d-X2e"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZtL-ld-NQI">
+                                <rect key="frame" x="0.0" y="0.5" width="160" height="30"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="userWantsToReturn:" destination="C2U-Cb-5TM" eventType="touchUpInside" id="isU-XS-iGf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="192"/>
                     <connections>
                         <outlet property="datePicker" destination="4Ln-R1-Zgo" id="1Nn-vk-kqy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGV-ZP-Ces" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="808"/>
+            <point key="canvasLocation" x="154" y="766"/>
         </scene>
         <!--Visual ViewVC-->
         <scene sceneID="QKN-e3-UlG">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="cww-Vt-JDf" customClass="VisualViewVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HJr-aB-xQt"/>
-                        <viewControllerLayoutGuide type="bottom" id="Kbt-0u-lYt"/>
-                    </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="feU-xs-JMi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clock starts in..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESM-Ch-E8k">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clock starts in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ESM-Ch-E8k">
                                 <rect key="frame" x="0.0" y="94" width="320" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-8Z-7po">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a8b-8Z-7po">
                                 <rect key="frame" x="0.0" y="123" width="320" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TIMELEFTTIMELEFT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bj-eL-CTp">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIMELEFTTIMELEFT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Bj-eL-CTp">
                                 <rect key="frame" x="0.0" y="291" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
