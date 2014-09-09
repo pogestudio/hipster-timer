@@ -7,14 +7,36 @@
 //
 
 #import "DatePickerVC.h"
+#import "Colors.h"
 
 @interface DatePickerVC ()
 
 @property (strong) IBOutlet UIDatePicker *datePicker;
+@property (strong) IBOutlet UIButton *doneButton;
+@property (strong) IBOutlet UIButton *cancelButton;
 
 @end
 
+
+
 @implementation DatePickerVC
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    [self.doneButton setBackgroundColor:[[Colors currentColorScheme] doneButtonBackground]];
+//    [self.cancelButton setBackgroundColor:[[Colors currentColorScheme] cancelButtonBackground]];
+    [self.doneButton setBackgroundColor:[[Colors currentColorScheme] generalBackground]];
+    [self.cancelButton setBackgroundColor:[[Colors currentColorScheme] generalBackground]];
+    [self.doneButton setTitleColor:[[Colors currentColorScheme] doneButtonTitle] forState:UIControlStateNormal];
+    [self.cancelButton setTitleColor:[[Colors currentColorScheme] cancelButtonTitle] forState:UIControlStateNormal];
+    self.view.backgroundColor = [[Colors currentColorScheme] generalBackground];
+    
+    UIFont *sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:20.0];
+    [self.doneButton.titleLabel setFont:sharedFont];
+    [self.cancelButton.titleLabel setFont:sharedFont];
+
+}
 
 -(void)setUpWithDate:(NSDate *)currentDate
 {
@@ -24,8 +46,13 @@
 
 -(IBAction)userWantsToReturn:(id)sender
 {
-    NSDate *pickedDate = [self.datePicker date];
-    [self.parentVC userPickedDate:pickedDate];
+    if ([sender isKindOfClass:[UIButton class]] && ((UIButton*)sender) == self.doneButton) {
+        NSDate *pickedDate = [self.datePicker date];
+        [self.parentVC userPickedDate:pickedDate];
+        
+    } else {
+        [self.parentVC slideOutDatePicker];
+    }
 }
 
 @end

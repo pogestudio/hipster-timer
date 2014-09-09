@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" id="UBs-tL-b28">
-                                <rect key="frame" x="0.0" y="43" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="43" width="320" height="357"/>
                                 <connections>
                                     <segue destination="cww-Vt-JDf" kind="embed" identifier="VisualVCSegue" id="5y0-aI-foS"/>
                                 </connections>
@@ -89,7 +89,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="192"/>
                     <connections>
+                        <outlet property="cancelButton" destination="ZtL-ld-NQI" id="oPI-ym-Cva"/>
                         <outlet property="datePicker" destination="4Ln-R1-Zgo" id="1Nn-vk-kqy"/>
+                        <outlet property="doneButton" destination="5Bn-JQ-ujx" id="KRy-Rw-jtR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGV-ZP-Ces" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,35 +103,36 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="cww-Vt-JDf" customClass="VisualViewVC" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="feU-xs-JMi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="357"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clock starts in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ESM-Ch-E8k">
-                                <rect key="frame" x="0.0" y="94" width="320" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="85" width="320" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a8b-8Z-7po">
-                                <rect key="frame" x="0.0" y="123" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="139" width="320" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIMELEFTTIMELEFT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Bj-eL-CTp">
-                                <rect key="frame" x="0.0" y="291" width="320" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seconds" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Bj-eL-CTp">
+                                <rect key="frame" x="0.0" y="257" width="320" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="clockStartsIn" destination="a8b-8Z-7po" id="4hU-tH-jRE"/>
-                        <outlet property="timeLeft" destination="7Bj-eL-CTp" id="5bb-x2-G29"/>
+                        <outlet property="clockStartsIn" destination="ESM-Ch-E8k" id="wa9-3M-yrA"/>
+                        <outlet property="timeLeftBeforeClockStarts" destination="a8b-8Z-7po" id="tyd-yf-yUY"/>
+                        <outlet property="timeLeftThisInterval" destination="7Bj-eL-CTp" id="RaE-O3-H0o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oSu-U3-QCR" userLabel="First Responder" sceneMemberID="firstResponder"/>

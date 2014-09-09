@@ -55,6 +55,10 @@ typedef enum {
     [super viewWillAppear:animated];
     self.UIUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLabels) userInfo:nil repeats:YES];
     [self.UIUpdateTimer fire];
+    
+    
+    self.view.backgroundColor = [[Colors currentColorScheme] generalBackground];
+
 
 }
 
