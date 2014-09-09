@@ -12,6 +12,7 @@
 #import "VisualViewVC.h"
 #import "NSDate+Helper.h"
 #import "CERoundProgressView.h"
+#import "Colors.h"
 
 @interface VisualViewVC()
 {
@@ -20,8 +21,9 @@
 
 @property (strong) CERoundProgressView *progressView;
 
-@property (strong) IBOutlet UILabel  *timeLeft;
+@property (strong) IBOutlet UILabel  *timeLeftThisInterval;
 @property (strong) IBOutlet UILabel  *clockStartsIn;
+@property (strong) IBOutlet UILabel  *timeLeftBeforeClockStarts;
 
 @end
 
@@ -48,13 +50,19 @@
                                         width,
                                         width)];
         [self.view addSubview:self.progressView];
-        UIColor *tintColor = [UIColor greenColor];
-        //        [[CERoundProgressView appearance] setTintColor:tintColor];
         
-        self.progressView.tintColor = tintColor;
-        self.progressView.trackColor = [UIColor colorWithWhite:0.80 alpha:1.0];
+        self.progressView.tintColor = [[Colors currentColorScheme] workDoneCircle];
+        self.progressView.trackColor = [[Colors currentColorScheme] workRemainingCircle];
         self.progressView.startAngle = (3.0*M_PI)/2.0;
     }
+    
+    UIFont *sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:30.0];
+    [self.timeLeftThisInterval setTextColor:[[Colors currentColorScheme] timeText]];
+    [self.timeLeftBeforeClockStarts setTextColor:[[Colors currentColorScheme] timeText]];
+    [self.clockStartsIn setTextColor:[[Colors currentColorScheme] timeText]];
+    [self.timeLeftBeforeClockStarts setFont:sharedFont];
+        [self.timeLeftThisInterval setFont:sharedFont];
+        [self.clockStartsIn setFont:sharedFont];
 }
 
 -(void)showPieChartForStartTime:(NSDate*)startTime andEndTime:(NSDate*)endTime
@@ -64,7 +72,8 @@
     
     CGFloat totalTimeBetweenDates = [endTime timeIntervalSinceDate:startTime];
     CGFloat timeElapsed = [[NSDate date] timeIntervalSinceDate:startTime];
-    self.progressView.progress = timeElapsed / totalTimeBetweenDates;
+    CGFloat progress = timeElapsed / totalTimeBetweenDates;
+    self.progressView.progress = progress;
     
     //Update Labels
     NSDate *currentDate = [NSDate date];
@@ -89,7 +98,9 @@
         timeLeftString = [NSString stringWithFormat:@"%@ %lds",timeLeftString,(long)seconds];
     }
     
-    self.timeLeft.text = timeLeftString;
+    timeLeftString = [NSString stringWithFormat:@"%@\n%.0f%%",timeLeftString,(1.0-progress)*100];
+    
+    self.timeLeftThisInterval.text = timeLeftString;
 
 
     difference = [[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:currentDate toDate:startTime options:0];
@@ -111,7 +122,7 @@
         timeLeftString = [NSString stringWithFormat:@"%@ %lds",timeLeftString,(long)seconds];
     }
     
-    self.clockStartsIn.text = timeLeftString;
+    self.timeLeftBeforeClockStarts.text = timeLeftString;
 }
 
 -(void)hideOrShowElementsDependingOnIfWeAreInRightTimeZoneWithDates:(NSDate*)start and:(NSDate*)end
@@ -119,7 +130,7 @@
     BOOL pieShouldBeVisible = [start isEarlierThanDate:[NSDate date]] && [end isLaterThanDate:[NSDate date]];
     //    self.progressView.alpha = pieShouldBeVisible ? 1 : 0;
     [self.progressView setHidden:!pieShouldBeVisible];
-    [self.timeLeft setHidden:!pieShouldBeVisible];
+    [self.timeLeftThisInterval setHidden:!pieShouldBeVisible];
     
 }
 

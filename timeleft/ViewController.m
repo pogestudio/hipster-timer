@@ -55,6 +55,10 @@ typedef enum {
     [super viewWillAppear:animated];
     self.UIUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLabels) userInfo:nil repeats:YES];
     [self.UIUpdateTimer fire];
+    
+    
+    self.view.backgroundColor = [[Colors currentColorScheme] generalBackground];
+
 
 }
 
@@ -65,8 +69,7 @@ typedef enum {
     NSAssert(_lastPickedDate == kDateTagStart || _lastPickedDate == kDateTagEnd, @"An incorrect datePickerTag is requesting the date to be picked!");
     NSDate *currentDate = _lastPickedDate == kDateTagStart ? self.startDate : self.endDate;
     [self.datePickerVC setUpWithDate:currentDate];
-    
-    [self.view addSubview:self.datePickerVC.view];
+    [self slideInDatePicker];
 }
 
 
@@ -98,7 +101,7 @@ typedef enum {
             break;
     }
     [self makeSureEndDateIsCorrectDay];
-    [self.datePickerVC.view removeFromSuperview];
+    [self slideOutDatePicker];
 }
 
 -(void)updateLabels
@@ -154,6 +157,41 @@ typedef enum {
         self.visualVC = (VisualViewVC*)[segue destinationViewController];
         NSAssert(self.visualVC, @"VisualVC is nil!!!!!!!");
     }
+}
+
+#pragma mark DatePickerStuff
+-(void)slideInDatePicker
+{
+    CGRect beforeFrame = CGRectMake(self.view.frame.size.width,
+                                    self.view.frame.size.height-self.datePickerVC.view.frame.size.height,
+                                    self.datePickerVC.view.frame.size.width,
+                                    self.datePickerVC.view.frame.size.height);
+    self.datePickerVC.view.frame = beforeFrame;
+    
+    if (!self.datePickerVC.view.superview) {
+        [self.view addSubview:self.datePickerVC.view];
+    }
+    
+    CGFloat animationDuration = 0.5;
+    CGRect afterFrame = CGRectMake(0,
+                                   self.view.frame.size.height-self.datePickerVC.view.frame.size.height,
+                                   self.datePickerVC.view.frame.size.width,
+                                   self.datePickerVC.view.frame.size.height);
+    [UIView animateWithDuration:animationDuration animations:^{
+        self.datePickerVC.view.frame = afterFrame;
+    }];
+}
+
+-(void)slideOutDatePicker
+{
+    CGFloat animationDuration = 0.5;
+    CGRect afterFrame = CGRectMake(-self.datePickerVC.view.frame.size.width,
+                                   self.view.frame.size.height-self.datePickerVC.view.frame.size.height,
+                                   self.datePickerVC.view.frame.size.width,
+                                   self.datePickerVC.view.frame.size.height);
+    [UIView animateWithDuration:animationDuration animations:^{
+        self.datePickerVC.view.frame = afterFrame;
+    }];
 }
 
 

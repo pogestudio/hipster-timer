@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Colors.h"
 
 
 
 @interface ViewController : UIViewController
 
 -(void)userPickedDate:(NSDate*)newDate;
-
+-(void)slideOutDatePicker;
 
 
 @end
