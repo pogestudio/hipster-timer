@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ColorScheme.h"
 
-@interface Colors : NSObject
+@interface AppColors : NSObject
 
 +(ColorScheme*)currentColorScheme;
 

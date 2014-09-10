@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 pogestudio. All rights reserved.
 //
 
-#import "Colors.h"
+#import "AppColors.h"
 
 #import "MixedPastell.h"
 
-@implementation Colors
+@implementation AppColors
 
 +(ColorScheme*)currentColorScheme
 {

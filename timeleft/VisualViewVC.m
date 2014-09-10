@@ -12,7 +12,7 @@
 #import "VisualViewVC.h"
 #import "NSDate+Helper.h"
 #import "CERoundProgressView.h"
-#import "Colors.h"
+#import "AppColors.h"
 
 @interface VisualViewVC()
 {
@@ -51,15 +51,15 @@
                                         width)];
         [self.view addSubview:self.progressView];
         
-        self.progressView.tintColor = [[Colors currentColorScheme] workDoneCircle];
-        self.progressView.trackColor = [[Colors currentColorScheme] workRemainingCircle];
+        self.progressView.tintColor = [[AppColors currentColorScheme] workDoneCircle];
+        self.progressView.trackColor = [[AppColors currentColorScheme] workRemainingCircle];
         self.progressView.startAngle = (3.0*M_PI)/2.0;
     }
     
     UIFont *sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:30.0];
-    [self.timeLeftThisInterval setTextColor:[[Colors currentColorScheme] timeText]];
-    [self.timeLeftBeforeClockStarts setTextColor:[[Colors currentColorScheme] timeText]];
-    [self.clockStartsIn setTextColor:[[Colors currentColorScheme] timeText]];
+    [self.timeLeftThisInterval setTextColor:[[AppColors currentColorScheme] timeText]];
+    [self.timeLeftBeforeClockStarts setTextColor:[[AppColors currentColorScheme] timeText]];
+    [self.clockStartsIn setTextColor:[[AppColors currentColorScheme] timeText]];
     [self.timeLeftBeforeClockStarts setFont:sharedFont];
         [self.timeLeftThisInterval setFont:sharedFont];
         [self.clockStartsIn setFont:sharedFont];

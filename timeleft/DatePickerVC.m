@@ -7,7 +7,7 @@
 //
 
 #import "DatePickerVC.h"
-#import "Colors.h"
+#import "AppColors.h"
 
 @interface DatePickerVC ()
 
@@ -26,22 +26,23 @@
     [super viewWillAppear:animated];
 //    [self.doneButton setBackgroundColor:[[Colors currentColorScheme] doneButtonBackground]];
 //    [self.cancelButton setBackgroundColor:[[Colors currentColorScheme] cancelButtonBackground]];
-    [self.doneButton setBackgroundColor:[[Colors currentColorScheme] generalBackground]];
-    [self.cancelButton setBackgroundColor:[[Colors currentColorScheme] generalBackground]];
-    [self.doneButton setTitleColor:[[Colors currentColorScheme] doneButtonTitle] forState:UIControlStateNormal];
-    [self.cancelButton setTitleColor:[[Colors currentColorScheme] cancelButtonTitle] forState:UIControlStateNormal];
-    self.view.backgroundColor = [[Colors currentColorScheme] generalBackground];
+    [self.doneButton setBackgroundColor:[[AppColors currentColorScheme] generalBackground]];
+    [self.cancelButton setBackgroundColor:[[AppColors currentColorScheme] generalBackground]];
+    [self.doneButton setTitleColor:[[AppColors currentColorScheme] doneButtonTitle] forState:UIControlStateNormal];
+    [self.cancelButton setTitleColor:[[AppColors currentColorScheme] cancelButtonTitle] forState:UIControlStateNormal];
+    self.view.backgroundColor = [[AppColors currentColorScheme] generalBackground];
     
     UIFont *sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:20.0];
     [self.doneButton.titleLabel setFont:sharedFont];
     [self.cancelButton.titleLabel setFont:sharedFont];
+    
 
 }
 
 -(void)setUpWithDate:(NSDate *)currentDate
 {
     NSDate *dateToShow = currentDate ? currentDate : [NSDate date];
-    [self.datePicker setDate:dateToShow];
+    [self.datePicker setDate:dateToShow animated:NO];
 }
 
 -(IBAction)userWantsToReturn:(id)sender

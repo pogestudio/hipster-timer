@@ -29,7 +29,7 @@
 		025F559319B88EF100816A5C /* CERoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025F559119B88EF100816A5C /* CERoundProgressView.m */; };
 		02896F9C19B618E700E37951 /* DatePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 02896F9B19B618E700E37951 /* DatePickerVC.m */; };
 		02C69D1619BF57EA00EEA9E1 /* ColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C69D1519BF57EA00EEA9E1 /* ColorScheme.m */; };
-		02C69D1919BF580D00EEA9E1 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C69D1819BF580D00EEA9E1 /* Colors.m */; };
+		02C69D1919BF580D00EEA9E1 /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C69D1819BF580D00EEA9E1 /* AppColors.m */; };
 		02C69D1D19BF59DC00EEA9E1 /* MixedPastell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C69D1C19BF59DC00EEA9E1 /* MixedPastell.m */; };
 		02C69D2119BF6B4D00EEA9E1 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C69D1E19BF6B4C00EEA9E1 /* Quicksand-Bold.ttf */; };
 		02C69D2219BF6B4D00EEA9E1 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02C69D1F19BF6B4D00EEA9E1 /* Quicksand-Light.ttf */; };
@@ -81,8 +81,8 @@
 		02896F9B19B618E700E37951 /* DatePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerVC.m; sourceTree = "<group>"; };
 		02C69D1419BF57EA00EEA9E1 /* ColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorScheme.h; sourceTree = "<group>"; };
 		02C69D1519BF57EA00EEA9E1 /* ColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorScheme.m; sourceTree = "<group>"; };
-		02C69D1719BF580D00EEA9E1 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
-		02C69D1819BF580D00EEA9E1 /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
+		02C69D1719BF580D00EEA9E1 /* AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColors.h; sourceTree = "<group>"; };
+		02C69D1819BF580D00EEA9E1 /* AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppColors.m; sourceTree = "<group>"; };
 		02C69D1B19BF59DC00EEA9E1 /* MixedPastell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixedPastell.h; sourceTree = "<group>"; };
 		02C69D1C19BF59DC00EEA9E1 /* MixedPastell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixedPastell.m; sourceTree = "<group>"; };
 		02C69D1E19BF6B4C00EEA9E1 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
@@ -155,7 +155,6 @@
 				0235065119B6168400DD33F3 /* AppDelegate.h */,
 				0235065219B6168400DD33F3 /* AppDelegate.m */,
 				0235065419B6168400DD33F3 /* Main.storyboard */,
-				02C69D1A19BF59C900EEA9E1 /* Colors */,
 				0235065719B6168400DD33F3 /* ViewController.h */,
 				0235065819B6168400DD33F3 /* ViewController.m */,
 				025F558619B8811300816A5C /* NSDate+timerHelper.h */,
@@ -211,6 +210,7 @@
 		02896F9919B618A700E37951 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				02C69D1A19BF59C900EEA9E1 /* Colors */,
 				02896F9A19B618E700E37951 /* DatePickerVC.h */,
 				02896F9B19B618E700E37951 /* DatePickerVC.m */,
 				025F558919B88CA300816A5C /* VisualViewVC.h */,
@@ -222,10 +222,10 @@
 		02C69D1A19BF59C900EEA9E1 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
+				02C69D1719BF580D00EEA9E1 /* AppColors.h */,
+				02C69D1819BF580D00EEA9E1 /* AppColors.m */,
 				02C69D1419BF57EA00EEA9E1 /* ColorScheme.h */,
 				02C69D1519BF57EA00EEA9E1 /* ColorScheme.m */,
-				02C69D1719BF580D00EEA9E1 /* Colors.h */,
-				02C69D1819BF580D00EEA9E1 /* Colors.m */,
 				02C69D1B19BF59DC00EEA9E1 /* MixedPastell.h */,
 				02C69D1C19BF59DC00EEA9E1 /* MixedPastell.m */,
 			);
@@ -358,7 +358,7 @@
 				025F558819B8811300816A5C /* NSDate+timerHelper.m in Sources */,
 				025F559219B88EF100816A5C /* CERoundProgressLayer.m in Sources */,
 				025F558B19B88CA300816A5C /* VisualViewVC.m in Sources */,
-				02C69D1919BF580D00EEA9E1 /* Colors.m in Sources */,
+				02C69D1919BF580D00EEA9E1 /* AppColors.m in Sources */,
 				0235065319B6168400DD33F3 /* AppDelegate.m in Sources */,
 				02896F9C19B618E700E37951 /* DatePickerVC.m in Sources */,
 				0235064F19B6168400DD33F3 /* main.m in Sources */,

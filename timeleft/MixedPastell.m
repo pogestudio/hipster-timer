@@ -48,4 +48,9 @@
     //            return [UIColor colorWithRed:0.722 green:0.965 blue:1.0 alpha:1.0];
     
 }
+
+-(UIColor*)timeButtonTitle
+{
+    return [UIColor colorWithRed:117.0/255.0 green:183.0/255.0 blue:1.0 alpha:1.0];
+}
 @end

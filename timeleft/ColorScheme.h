@@ -10,12 +10,20 @@
 
 @interface ColorScheme : NSObject
 
+//BUTTONS
 -(UIColor*)cancelButtonBackground;
 -(UIColor*)doneButtonBackground;
 -(UIColor*)cancelButtonTitle;
 -(UIColor*)doneButtonTitle;
+
+-(UIColor*)timeButtonTitle;
+
+
+//TEXT
 -(UIColor*)generalBackground;
 -(UIColor*)timeText;
+
+//App specific Elements
 -(UIColor*)workDoneCircle;
 -(UIColor*)workRemainingCircle;
 

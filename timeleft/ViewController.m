@@ -17,6 +17,7 @@ typedef enum {
 #import "NSDate+Helper.h"
 #import "NSDate+timerHelper.h"
 #import "VisualViewVC.h"
+#import "AppColors.h"
 
 #define kStartDateKey @"TimeLeftStartDateKey"
 #define kEndDateKey @"TimeLeftEndDateKey"
@@ -59,20 +60,29 @@ typedef enum {
     self.UIUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLabels) userInfo:nil repeats:YES];
     [self.UIUpdateTimer fire];
     
-    
-    UIFont *sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:15.0];
-    [self.startTimeButton.titleLabel setFont:sharedFont];
-        [self.endTimeButton.titleLabel setFont:sharedFont];
 
     
-    self.view.backgroundColor = [[Colors currentColorScheme] generalBackground];
-    
+    self.view.backgroundColor = [[AppColors currentColorScheme] generalBackground];
+    [self.startTimeButton setTitleColor:[[AppColors currentColorScheme] timeButtonTitle] forState:UIControlStateNormal];
+    [self.endTimeButton setTitleColor:[[AppColors currentColorScheme] timeButtonTitle] forState:UIControlStateNormal];
+
     
     
     //PREPARE
     [self loadDatesIfNeeded];
-    [self makeSureEndDateIsCorrectDay];
     [self updateButtonLabels];
+    
+    
+    UIFont *sharedFont;
+    if (self.startTimeButton.titleLabel.text.length < 6) {
+        sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:25.0];
+    } else {
+        sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:15.0];
+    }
+    
+    [self.startTimeButton.titleLabel setFont:sharedFont];
+    [self.endTimeButton.titleLabel setFont:sharedFont];
+
     
 }
 
@@ -106,7 +116,6 @@ typedef enum {
             NSLog(@"User canceled or some shits");
             break;
     }
-    [self makeSureEndDateIsCorrectDay];
     [self updateButtonLabels];
     [self slideOutDatePicker];
     [self saveCurrentDates];
@@ -138,6 +147,7 @@ typedef enum {
         return;
     }
     
+    [self makeSureEndDateIsCorrectDay];
     [self makeSureDatesAreInOrder];
     [self.visualVC showPieChartForStartTime:self.startDate andEndTime:self.endDate];
     
@@ -147,6 +157,8 @@ typedef enum {
 
 -(void)makeSureEndDateIsCorrectDay
 {
+    //This will execute every time when the span crosses a day shift. Observed, but ignored for now.
+
     //shift to today
     self.endDate = [self.endDate dateAdjustedToBeTheSameDayAs:[NSDate date]];
     
@@ -160,7 +172,9 @@ typedef enum {
 
 -(void)makeSureDatesAreInOrder
 {
-
+    //This will execute every time when the span crosses a day shift. Observed, but ignored for now.
+    
+    
     //make sure that the end day and start day are on the same day
     BOOL datesAreOnSameDay = [self.startDate isEqualToDateIgnoringTime:self.endDate];
     if (!datesAreOnSameDay) {

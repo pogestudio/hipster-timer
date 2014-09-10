@@ -53,5 +53,11 @@
     return nil;
 }
 
+-(UIColor*)timeButtonTitle
+{
+    NSAssert(nil,@"This property on COlorScheme needs to be subclassed");
+    return nil;
+}
+
 
 @end
