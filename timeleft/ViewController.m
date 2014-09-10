@@ -18,6 +18,9 @@ typedef enum {
 #import "NSDate+timerHelper.h"
 #import "VisualViewVC.h"
 
+#define kStartDateKey @"TimeLeftStartDateKey"
+#define kEndDateKey @"TimeLeftEndDateKey"
+
 @interface ViewController ()
 {
     DateTag _lastPickedDate;
@@ -63,8 +66,14 @@ typedef enum {
 
     
     self.view.backgroundColor = [[Colors currentColorScheme] generalBackground];
-
-
+    
+    
+    
+    //PREPARE
+    [self loadDatesIfNeeded];
+    [self makeSureEndDateIsCorrectDay];
+    [self updateButtonLabels];
+    
 }
 
 -(IBAction)userWantsToPickDate:(id)sender
@@ -82,23 +91,15 @@ typedef enum {
 {
     NSAssert(newDate, @"Picked date is nil. WTF?");
     
-    static NSDateFormatter *_buttonFormatter;
-    if (!_buttonFormatter) {
-        _buttonFormatter = [[NSDateFormatter alloc] init];
-        [_buttonFormatter setDateFormat:@"HH:mm"];
-    }
-    NSString *dateString = [_buttonFormatter stringFromDate:newDate];
     switch (_lastPickedDate) {
         case kDateTagStart:
         {
             self.startDate = newDate;
-            [self.startTimeButton setTitle:dateString forState:UIControlStateNormal];
             break;
         }
         case kDateTagEnd:
         {
             self.endDate = newDate;
-            [self.endTimeButton setTitle:dateString forState:UIControlStateNormal];
             break;
         }
         default:
@@ -106,7 +107,29 @@ typedef enum {
             break;
     }
     [self makeSureEndDateIsCorrectDay];
+    [self updateButtonLabels];
     [self slideOutDatePicker];
+    [self saveCurrentDates];
+}
+
+-(void)updateButtonLabels
+{
+    static NSDateFormatter *_buttonFormatter;
+    if (!_buttonFormatter) {
+        _buttonFormatter = [[NSDateFormatter alloc] init];
+        [_buttonFormatter setDateFormat:@"HH:mm"];
+    }
+
+    if (self.startDate) {
+        NSString *dateString = [_buttonFormatter stringFromDate:self.startDate];
+        [self.startTimeButton setTitle:dateString forState:UIControlStateNormal];
+    }
+    if (self.endDate) {
+        NSString *dateString = [_buttonFormatter stringFromDate:self.endDate];
+        [self.endTimeButton setTitle:dateString forState:UIControlStateNormal];
+
+    }
+
 }
 
 -(void)updateLabels
@@ -116,7 +139,6 @@ typedef enum {
     }
     
     [self makeSureDatesAreInOrder];
-   
     [self.visualVC showPieChartForStartTime:self.startDate andEndTime:self.endDate];
     
 }
@@ -199,5 +221,26 @@ typedef enum {
     }];
 }
 
+#pragma mark Saving/Loading
+-(void)loadDatesIfNeeded
+{
+    if (!self.startDate) {
+        self.startDate = [[NSUserDefaults standardUserDefaults] objectForKey:kStartDateKey];
+    }
+    if (!self.endDate) {
+        self.endDate = [[NSUserDefaults standardUserDefaults] objectForKey:kEndDateKey];
+    }
+}
+
+-(void)saveCurrentDates
+{
+    if (self.startDate) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.startDate forKey: kStartDateKey];
+    }
+    if (self.endDate) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.endDate forKey: kEndDateKey];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 @end
