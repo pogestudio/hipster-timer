@@ -98,7 +98,10 @@
         timeLeftString = [NSString stringWithFormat:@"%@ %lds",timeLeftString,(long)seconds];
     }
     
-    timeLeftString = [NSString stringWithFormat:@"%@\n%.0f%%",timeLeftString,(1.0-progress)*100];
+    NSString *percentageText = [NSString stringWithFormat:@"%.0f%%",(1.0-progress)*100];
+    percentageText = progress > 0.99 ? @"<1%" : percentageText;
+        percentageText = progress < 0.01 ? @">99%" : percentageText;
+    timeLeftString = [NSString stringWithFormat:@"%@\n%@",timeLeftString,percentageText];
     
     self.timeLeftThisInterval.text = timeLeftString;
 
