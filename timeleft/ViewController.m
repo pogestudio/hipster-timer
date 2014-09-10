@@ -57,6 +57,11 @@ typedef enum {
     [self.UIUpdateTimer fire];
     
     
+    UIFont *sharedFont = [UIFont fontWithName:@"Quicksand-Regular" size:15.0];
+    [self.startTimeButton.titleLabel setFont:sharedFont];
+        [self.endTimeButton.titleLabel setFont:sharedFont];
+
+    
     self.view.backgroundColor = [[Colors currentColorScheme] generalBackground];
 
 
